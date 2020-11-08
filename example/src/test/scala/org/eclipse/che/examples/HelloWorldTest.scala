@@ -4,13 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 package org.eclipse.che.examples
 
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
+import zio.test.Assertion._
+import zio.test._
 
 /** Unit test for simple App.
   */
-class HelloWorldTest extends AnyFlatSpec with Matchers {
-  "HelloWorld.greet" should "say Hello _!" in {
-    HelloWorld.greet("World").unsafeRunSync() should ===("Hello World!")
-  }
+object HelloWorldTest extends DefaultRunnableSpec {
+  def spec: ZSpec[Environment, Failure] =
+    suite("HelloWorld.greet")(
+      testM("should say Hello _!") {
+        assertM(HelloWorld.greet("Che"))(equalTo("Hello Che!"))
+      },
+    )
 }

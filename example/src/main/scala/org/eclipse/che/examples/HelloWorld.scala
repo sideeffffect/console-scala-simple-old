@@ -4,20 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 package org.eclipse.che.examples
 
-import cats.effect._
+import zio._
 
-object HelloWorld extends IOApp {
+object HelloWorld extends App {
 
-  override def run(args: List[String]): IO[ExitCode] = {
-    val che = "Che"
+  override def run(args: List[String]): URIO[ZEnv, ExitCode] =
+    program.exitCode
+
+  def program: RIO[console.Console, Unit] = {
     for {
-      greeting <- greet(che)
-      _ <- Console.io.putStrLn(greeting)
-    } yield ExitCode.Success
+      name <- console.getStrLn
+      greeting <- greet(name)
+      _ <- console.putStrLn(greeting)
+    } yield ()
   }
 
-  def greet(name: String): IO[String] = {
-    IO.pure(s"Hello $name!")
+  def greet(name: String): Task[String] = {
+    Task.succeed(s"Hello $name!")
   }
 
 }

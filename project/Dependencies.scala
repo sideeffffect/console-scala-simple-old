@@ -4,12 +4,12 @@ object Dependencies {
 
   object Versions {
 
-    val console4cats = "0.8.1"
-    val scalaTest = "3.2.2"
+    val zio = "1.0.3"
 
   }
 
-  val console4cats = "dev.profunktor" %% "console4cats" % Versions.console4cats
-  val scalaTest = "org.scalatest" %% "scalatest" % Versions.scalaTest
+  val zio = "dev.zio" %% "zio" % Versions.zio
+  val zioTest = "dev.zio" %% "zio-test" % Versions.zio
+  val zioTestSbt = "dev.zio" %% "zio-test-sbt" % Versions.zio
 
 }

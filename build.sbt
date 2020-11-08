@@ -18,8 +18,9 @@ lazy val example = project
     name := "example",
     Compile / mainClass := Some("org.eclipse.che.examples.HelloWorld"),
     libraryDependencies ++= List(
-      Dependencies.console4cats,
-      Dependencies.scalaTest % Test,
+      Dependencies.zio,
+      Dependencies.zioTest % Test,
+      Dependencies.zioTestSbt % Test,
     ),
   )
 
@@ -35,6 +36,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
       url("https://www.eclipse.org/che/"),
     ),
   ),
+  testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
   mimaReportBinaryIssues := {},
 ) ++ DecentScala.decentScalaSettings
 
