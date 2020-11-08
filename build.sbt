@@ -35,8 +35,7 @@ lazy val commonSettings: List[Def.Setting[_]] = List(
       url("https://www.eclipse.org/che/"),
     ),
   ),
-//) ++ DecentScala.decentScalaSettings
-)
+  mimaReportBinaryIssues := {},
+) ++ DecentScala.decentScalaSettings
 
-//addCommandAlias("ci", "; check; publishLocal")
-addCommandAlias("ci", "; publishLocal")
+addCommandAlias("ci", "; check; publishLocal")
