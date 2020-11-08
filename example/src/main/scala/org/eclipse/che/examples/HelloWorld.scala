@@ -4,14 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 package org.eclipse.che.examples
 
+import java.io.IOException
+
 import zio._
 
 object HelloWorld extends App {
 
-  override def run(args: List[String]): URIO[ZEnv, ExitCode] =
+  override def run(args: List[String]): ZIO[ZEnv, Nothing, ExitCode] =
     program.exitCode
 
-  def program: RIO[console.Console, Unit] = {
+  def program: ZIO[console.Console, IOException, Unit] = {
     for {
       name <- console.getStrLn
       greeting <- greet(name)
@@ -19,8 +21,8 @@ object HelloWorld extends App {
     } yield ()
   }
 
-  def greet(name: String): Task[String] = {
-    Task.succeed(s"Hello $name!")
+  def greet(name: String): ZIO[Any, Nothing, String] = {
+    ZIO.succeed(s"Hello $name!")
   }
 
 }
