@@ -1,1 +1,1 @@
-addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.5.1+25-1c4d144c")
+addSbtPlugin("com.github.sideeffffect" % "sbt-decent-scala" % "0.5.1+26-b46f1893")
