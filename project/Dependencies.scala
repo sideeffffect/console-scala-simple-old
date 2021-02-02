@@ -4,7 +4,7 @@ object Dependencies {
 
   object Versions {
 
-    val zio = "1.0.4"
+    val zio = "1.0.4-2"
 
   }
 
