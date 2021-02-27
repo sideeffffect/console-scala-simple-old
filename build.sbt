@@ -1,6 +1,6 @@
 Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / turbo := true
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.13.5"
 
 lazy val root = project
   .in(file("."))
