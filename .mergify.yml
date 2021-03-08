@@ -6,7 +6,7 @@ pull_request_rules:
       assign:
         users: [sideeffffect]
       label:
-        add: [dependency-update]
+        add: ["type: dependencies"]
   - name: merge Scala Steward's PRs
     conditions:
       - base=master
@@ -15,12 +15,12 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-  - name: automatic merge on CI success and review
+  - name: automatic merge for master when CI passes
     conditions:
       - base=master
+      - label=mergify-merge
       - "#review-requested=0"
       - "#changes-requested-reviews-by=0"
-      - "#approved-reviews-by>=1"
       - status-success=ci
     actions:
       merge:
