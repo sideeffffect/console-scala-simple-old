@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 package org.eclipse.che.examples
 
-import java.io.IOException
-
 import zio._
+
+import java.io.IOException
 
 object HelloWorld extends App {
 

@@ -2,7 +2,8 @@ name: Release
 on:
   push:
     branches: [ master ]
-    tags: ["*"]
+  release:
+    types: [ published ]
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,7 +16,6 @@ jobs:
       - uses: olafurpg/setup-scala@v10
         with:
           java-version: adopt@1.11
-      - uses: olafurpg/setup-gpg@v3
       - name: Coursier cache
         uses: coursier/cache-action@v5
       - name: sbt ci-release ${{ github.ref }}
