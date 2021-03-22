@@ -15,14 +15,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-  - name: merge Dependabot's PRs
-    conditions:
-      - base=master
-      - author=dependabot[bot]
-      - status-success=ci
-    actions:
-      merge:
-        method: squash
   - name: automatic merge for master when CI passes
     conditions:
       - base=master
